@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>战略小龙虾·5扎心诊断</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:PingFang SC,Microsoft YaHei,sans-serif;background:#0d0d1a;color:#fff;min-height:100vh;overflow-x:hidden}
+.c{max-width:480px;margin:0 auto;min-height:100vh}
+
+/* 开场页 */
+#s0{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:32px 24px;text-align:center}
+.li{font-size:72px;margin-bottom:16px;animation:a1 2.5s ease-in-out infinite}
+@keyframes a1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+h1{font-size:32px;color:#D4AF37;font-weight:700;letter-spacing:3px;margin-bottom:6px}
+.sub{font-size:15px;color:#D4AF37;margin-bottom:4px}
+.shop{font-size:12px;color:#666;margin-bottom:32px}
+.cite{font-size:13px;color:#aaa;line-height:2;max-width:360px;margin:0 auto 32px;font-style:italic;border-left:2px solid rgba(212,175,55,.3);padding-left:16px;text-align:left}
+.cite::before{content:'"';font-size:24px;color:#D4AF37;display:block}
+.next-btn{width:100%;padding:16px;background:linear-gradient(135deg,#D4AF37,#b8962e);color:#1a0f0f;font-size:16px;font-weight:700;border:none;border-radius:12px;cursor:pointer;letter-spacing:1px;margin-bottom:14px}
+.nt{font-size:12px;color:#555}
+
+/* 引导页 */
+#s00{display:none;flex-direction:column;min-height:100vh;padding:32px 24px;justify-content:center}
+#s00 h2{font-size:22px;color:#D4AF37;font-weight:700;margin-bottom:8px}
+#s00 .sub2{font-size:13px;color:#888;margin-bottom:28px}
+#s00 .intro-box{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:14px;padding:22px;margin-bottom:24px;text-align:left}
+#s00 .intro-box p{font-size:14px;color:#ccc;line-height:2.2;margin-bottom:12px}
+#s00 .intro-box p:last-child{margin-bottom:0}
+#s00 .warn{font-size:12px;color:#ff8888;line-height:1.9;border-left:2px solid rgba(255,100,100,.4);padding-left:12px;margin-top:16px}
+.start-btn{width:100%;padding:16px;background:linear-gradient(135deg,#D4AF37,#b8962e);color:#1a0f0f;font-size:16px;font-weight:700;border:none;border-radius:12px;cursor:pointer;letter-spacing:1px}
+.nt2{font-size:12px;color:#555;margin-top:14px}
+
+/* 问答页 */
+#s2{display:none;flex-direction:column;min-height:100vh;padding:14px 16px 100px}
+.hd{text-align:center;padding:10px 0 14px;border-bottom:1px solid rgba(212,175,55,.15);margin-bottom:12px;position:sticky;top:0;background:#0d0d1a;z-index:5}
+.hd1{font-size:12px;color:#D4AF37;font-weight:600;letter-spacing:1px}
+.hd2{font-size:11px;color:#666;margin-top:3px}
+.pr{width:100%;height:3px;background:rgba(255,255,255,.07);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.prf{height:100%;background:linear-gradient(90deg,#D4AF37,#ff8888);width:0;transition:width .5s}
+.ms{flex:1;overflow-y:auto;padding:12px 0 8px}
+.msg{margin-bottom:14px;animation:f1 .35s ease}
+@keyframes f1{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.rb{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.15);border-radius:4px 14px 14px 14px;padding:14px 16px;font-size:14px;line-height:1.9;color:#ddd;max-width:92%}
+.ql{color:#D4AF37;font-size:11px;font-weight:600;margin-bottom:8px;display:block}
+.hi{color:#888;font-size:11px;margin-top:8px;font-style:italic;line-height:1.8}
+.fw{color:#D4AF37;font-size:11px;margin-top:8px}
+.ub{background:rgba(212,175,55,.82);color:#1a0f0f;border-radius:14px 4px 14px 14px;padding:12px 15px;font-size:14px;line-height:1.8;margin-left:auto;max-width:84%;font-weight:500;word-break:break-all}
+.bt{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(0deg,#0d0d1a 88%,transparent);padding:10px 16px 22px;max-width:480px;margin:0 auto;z-index:10}
+.bx{display:flex;gap:8px;align-items:flex-end}
+.ta{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.28);border-radius:10px;padding:10px 12px;color:#fff;font-size:14px;resize:none;outline:none;min-height:46px;max-height:110px;font-family:inherit;line-height:1.6}
+.ta:focus{border-color:rgba(212,175,55,.65)}
+.ta::placeholder{color:#555}
+.sb{width:46px;height:46px;background:linear-gradient(135deg,#D4AF37,#b8962e);border:none;border-radius:10px;color:#1a0f0f;font-size:18px;cursor:pointer;flex-shrink:0}
+.skip-btn{width:100%;padding:9px;background:transparent;border:1px solid rgba(255,255,255,.08);color:#666;font-size:12px;border-radius:8px;cursor:pointer;margin-top:8px}
+
+/* 报告页 */
+#s3{display:none;min-height:100vh;padding:24px 16px 40px;background:linear-gradient(180deg,#0d0d1a,#0c1a1a)}
+.rh{text-align:center;margin-bottom:20px}
+.rb2{display:inline-block;background:linear-gradient(135deg,#D4AF37,#b8962e);color:#1a0f0f;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:1px;margin-bottom:10px}
+h2{font-size:20px;color:#D4AF37;font-weight:700;margin-bottom:4px}
+.rs{font-size:12px;color:#777}
+.s{background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.1);border-radius:14px;padding:16px;margin-bottom:12px}
+.st{font-size:11px;color:#D4AF37;font-weight:600;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.st::before{content:'';width:3px;height:13px;background:#D4AF37;border-radius:2px}
+.tx{font-size:13px;color:#ccc;line-height:1.9;word-break:break-all}
+.tx strong{color:#D4AF37}
+.danger{border-left:3px solid #ff6666;padding:10px 14px;background:rgba(255,80,80,.05);border-radius:0 10px 10px 0;margin:8px 0;font-size:12px;color:#ffaaaa;line-height:2}
+.warning{border-left:3px solid #ffbb44;padding:10px 14px;background:rgba(255,187,68,.04);border-radius:0 10px 10px 0;margin:8px 0;font-size:12px;color:#ffdd88;line-height:2}
+.ok{border-left:3px solid #66cc66;padding:10px 14px;background:rgba(102,204,102,.04);border-radius:0 10px 10px 0;margin:8px 0;font-size:12px;color:#aaffaa;line-height:2}
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px}
+.tag-red{background:rgba(255,80,80,.15);color:#ff6666}
+.tag-yellow{background:rgba(255,187,68,.15);color:#ffbb44}
+.red{color:#ff6666}
+.green{color:#66cc66}
+.day-list{margin-top:10px}
+.day-item{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.12);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.day-item strong{color:#D4AF37;font-size:12px;display:block;margin-bottom:6px}
+.day-item span{display:block;font-size:12px;color:#bbb;line-height:1.8}
+.day-item span::before{content:'· ';color:#D4AF37}
+.share-btn{width:100%;padding:14px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-align:center;border:none;display:block;margin-bottom:10px}
+.share-img-btn{background:rgba(212,175,55,.1);color:#D4AF37;border:1px solid rgba(212,175,55,.25)}
+.ac{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.bp{width:100%;padding:14px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-align:center;border:none;display:block}
+.bpa{background:linear-gradient(135deg,#D4AF37,#b8962e);color:#1a0f0f}
+.bs{background:transparent;color:#888;border:1px solid rgba(255,255,255,.1)}
+
+/* 报告弹窗（图片生成） */
+#reportCanvas{display:none}
+.share-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100;align-items:center;justify-content:center;padding:20px}
+.share-modal.show{display:flex}
+.share-modal .sm-box{background:#1a1a2e;border-radius:16px;padding:24px;max-width:360px;width:100%;text-align:center}
+.share-modal h3{color:#D4AF37;font-size:18px;margin-bottom:8px}
+.share-modal p{color:#aaa;font-size:13px;margin-bottom:20px;line-height:1.8}
+.share-modal canvas{border-radius:12px;width:100%;margin-bottom:16px}
+.share-modal .close-modal{width:100%;padding:12px;background:rgba(255,255,255,.06);color:#888;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="c">
+
+<!-- 开场页 s0 -->
+<div id="s0">
+  <div class="li">🦞</div>
+  <h1>战略小龙虾</h1>
+  <div class="sub">5扎心诊断 · 战略定位</div>
+  <div class="shop">战略小龙虾商店</div>
+  <div class="cite">
+    中年人最容易犯的错，不是选错了路，<br>
+    是干了半辈子，<br>
+    从来没认真问过自己：<br>
+    我到底值什么？<br><br>
+    这5道题，<br>
+    把你在别人眼里值钱、<br>
+    但你自己看不见的东西翻出来。
+  </div>
+  <button class="next-btn" id="nextBtn">先看看说明 →</button>
+  <div class="nt">5道灵魂拷问 · 约10分钟 · 答完即出诊断</div>
+</div>
+
+<!-- 引导页 s00 -->
+<div id="s00">
+  <h2>在开始之前，想跟你说几句</h2>
+  <div class="sub2">这5道题，不是考你，是照镜子</div>
+  <div class="intro-box">
+    <p>我不是要考你懂多少做IP的知识。</p>
+    <p>我是要把你在别人眼里值钱、但你自己看不见的那部分翻出来。</p>
+    <p>很多中年人干了一辈子，从来没认真想过这件事。</p>
+    <p>所以这5道题，每道都会揭穿一个你可能正在犯、但不自知的错误。</p>
+    <div class="warn">⚠ 提前说好：这份测试不含安慰，不说废话，只说真话。<br>如果你只想听好话，现在关掉还来得及。</div>
+  </div>
+  <button class="start-btn" id="startBtn">我准备好了，开始</button>
+  <div class="nt2">5道灵魂拷问 · 约10分钟 · 答完即出诊断</div>
+</div>
+
+<!-- 问答页 s2 -->
+<div id="s2">
+  <div class="hd">
+    <div class="hd1">🦞 战略小龙虾 · 5扎心诊断</div>
+    <div class="hd2" id="pl">第 1 道题</div>
+  </div>
+  <div class="pr"><div class="prf" id="pf"></div></div>
+  <div class="ms" id="ms"></div>
+  <div class="bt">
+    <div class="bx">
+      <textarea class="ta" id="ti" placeholder="写下你的真实回答..." rows="1"></textarea>
+      <button class="sb" id="sb">▶</button>
+    </div>
+    <button class="skip-btn" id="skipBtn">跳过此题 →</button>
+  </div>
+</div>
+
+<!-- 报告页 s3 -->
+<div id="s3">
+  <div class="rh">
+    <div class="rb2">🦞 战略小龙虾 · 诊断报告</div>
+    <h2>你的专属画像 + 诊断</h2>
+    <div class="rs">以下诊断基于你的真实回答，没有一句废话</div>
+  </div>
+  <div id="rc"></div>
+</div>
+
+</div>
+
+<!-- 报告图片弹窗 -->
+<div class="share-modal" id="shareModal">
+  <div class="sm-box">
+    <h3>🦞 你的诊断报告</h3>
+    <p>长按保存图片，发朋友圈或发给朋友</p>
+    <canvas id="reportCanvas" width="360" height="520"></canvas>
+    <button class="close-modal" id="closeModal">关闭</button>
+  </div>
+</div>
+
+<script>
+// ========== 题目配置 ==========
+var Q=[
+{q:'有人说"你这事儿我搞不定，你帮帮我"——但他最后付钱了吗？',h:'别人找你帮忙≠你的手艺值money。说一个你帮过很多次但从来没收到过钱的事。',intro:'先问一个最常见的情况——你身边有没有这样的人？'},
+{q:'你跟你这行刚入行的新手比，最大的区别是什么？新手多久能追上你？',h:'别说"经验丰富"，说一个你花了多少年才掌握、新手没有捷径的那点东西。',intro:'好，就算有人找你了，你跟新手的差距到底在哪？'},
+{q:'你见过有人因为你的这件事发生了什么具体改变吗？',h:'不是"帮过人"，是帮完之后对方的生活/生意/状态有什么真实变化，那句让他记住的话是什么？',intro:'接下来问一个有点扎心的——你的手艺，真的改变过谁吗？'},
+{q:'如果一个年轻人明天开始做你这行，勤快、便宜、愿意学，你还能活下去吗？',h:'你现在吃饭的本事，是靠时间积累出来的，还是他愿意花功夫就能学会的？',intro:'假设来了一个比你年轻、比你勤快、比你便宜的人——你的壁垒在哪？'},
+{q:'有没有一件事，你做的时候觉得很简单，但别人花大钱学了还是学不会？',h:'你觉得简单的事别人觉得难。但光你觉得简单不够——有没有人愿意为这个"简单"付过钱？',intro:'最后问一个最核心的——你的天赋，有没有变成别人愿意掏钱的东西？'}
+];
+var Q2=[
+'能说一个具体的人吗？哪怕是朋友、邻居、同事都可以，哪怕没付钱也行。',
+'别说"干得久"，干得久不等于干得好。说一个更底层的东西。',
+'没有真实的改变=没有人真正感受到你的价值。你还停留在"我觉得有用"阶段。',
+'如果你的答案是"勤快"或"价格低"，这不是护城河，这是苦力活。',
+'你觉得简单的事，有没有变成别人愿意掏钱的产品？'
+];
+
+// ========== 状态 ==========
+var q=0,da={};
+
+// ========== 页面控制 ==========
+document.getElementById('nextBtn').onclick=function(){
+document.getElementById('s0').style.display='none';
+document.getElementById('s00').style.display='flex';
+};
+document.getElementById('startBtn').onclick=function(){
+document.getElementById('s00').style.display='none';
+document.getElementById('s2').style.display='flex';
+prompt();
+};
+
+// ========== 问答逻辑 ==========
+function add(t,c){
+var d=document.createElement('div');d.className='msg';
+d.innerHTML=t==='u'?'<div class="ub">'+c.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</div>':'<div class="rb">'+c+'</div>';
+document.getElementById('ms').appendChild(d);
+document.getElementById('ms').scrollTop=document.getElementById('ms').scrollHeight;
+}
+
+function pg(){
+document.getElementById('pf').style.width=((q+1)/5*100)+'%';
+document.getElementById('pl').textContent='第 '+(q+1)+' 道题，共5道';
+}
+
+function prompt(){
+var c=Q[q];
+var n=Q2[q];
+var intro=c.intro||'';
+var s='<span class="ql">第 '+(q+1)+' 题 / 共5题</span><br><br>'+
+'<strong style="font-size:15px;color:#fff;line-height:2">'+c.q+'</strong><br><br>'+
+'<span class="hi">'+c.h+'</span><br><br>'+
+'<span class="fw">→ '+n+'</span>';
+add('r',s);
+}
+
+function send(skip){
+var t=document.getElementById('ti').value.trim();
+document.getElementById('ti').value='';
+if(!skip&&t){
+add('u',t);
+da['q'+q]=t;
+}else if(!skip){
+return;
+}
+q++;
+if(q>=5){report();return}
+pg();
+setTimeout(prompt,400);
+}
+
+document.getElementById('sb').onclick=function(){send(false)};
+document.getElementById('ti').onkeydown=function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(false)}};
+document.getElementById('skipBtn').onclick=function(){send(true)};
+
+// ========== 报告生成 ==========
+function report(){
+document.getElementById('s2').style.display='none';
+document.getElementById('s3').style.display='block';
+window.scrollTo(0,0);
+
+var a1=da['q0']||'';
+var a2=da['q1']||'';
+var a3=da['q2']||'';
+var a4=da['q3']||'';
+var a5=da['q4']||'';
+
+// 关键词语义分析（比只看字数更精准）
+function getLight(ans, keywords){
+if(ans.length<8) return'red';
+var matched=keywords.filter(function(k){return ans.indexOf(k)!==-1}).length;
+if(matched>0) return'yellow';
+return'red';
+}
+var l1=getLight(a1,['钱','付','收','不好意思','免费','帮忙']);
+var l2=getLight(a2,['经验','积累','年','弯路','坑','才知道']);
+var l3=getLight(a3,['改变','变化','感谢','不一样','他说','她說','帮我','谢']);
+var l4=getLight(a4,['勤快','便宜','追上','壁垒','护城','时间','积累']);
+var l5=getLight(a5,['简单','别人','学不会','天赋','花钱']);
+var lights=[l1,l2,l3,l4,l5];
+var redCount=lights.filter(function(x){return x==='red'}).length;
+var yellowCount=lights.filter(function(x){return x==='yellow'}).length;
+
+function lightTag(l){
+if(l==='red')return'<span class="tag tag-red">红灯</span>';
+return'<span class="tag tag-yellow">黄灯</span>';
+}
+function lightBox(l,shortText,ans){
+if(l==='red')return'<div class="danger">'+shortText+'</div>';
+// 黄灯时也显示用户回答，让用户感觉被看到
+var showAns=ans.length>5?'<div style="margin-top:8px;font-size:12px;color:#ffdd88">你的回答：'+ans.substring(0,80)+(ans.length>80?'...':'')+'</div>':'';
+return'<div class="warning">'+shortText+showAns+'</div>';
+}
+
+// ========== 真实画像 ==========
+var typeName='',typeTag='',profileText='';
+if(redCount>=4){
+typeName='⚠️ 有手艺，没变现';
+typeTag='tag-red';
+profileText='<p style="margin-bottom:10px">你有一个干了很久的事，但从来没有为它收过钱。</p>'+
+'<p>你觉得自己有手艺，但没人愿意为这个手艺掏钱。</p>'+
+'<p>你的经验存在脑子里，没有变成别人愿意买的东西。</p>'+
+'<p style="margin-top:10px">这不意味着你不行。</p>'+
+'<p>开20年洗衣店的老师傅，从不上镜头——但评论区说"你家在哪儿"。</p>'+
+'<p style="margin-top:10px"><strong>你缺的从来不是手艺，是把手艺变成钱的那一步。</strong></p>';
+}else if(redCount>=2){
+typeName='⚡ 有手艺，有人找，没变成产品';
+typeTag='tag-red';
+profileText='<p style="margin-bottom:10px">有人找过你帮忙，但没人真正为你的手艺付过钱。</p>'+
+'<p>你知道自己有东西，但不知道这东西值多少钱。</p>'+
+'<p>你的核心问题不是能力，是还没有把它变成可以卖的产品。</p>'+
+'<p style="margin-top:10px">做了10年电商的老板娘，上万场直播——但她说自己"太年轻没资格"。</p>'+
+'<p style="margin-top:10px"><strong>你不是没价值，你是还没输出自己。</strong></p>';
+}else{
+typeName='✓ 有手艺，有变现，需要放大';
+typeTag='tag-yellow';
+profileText='<p style="margin-bottom:10px">你已经在变现，但规模上不去，或者变现方式太辛苦。</p>'+
+'<p>你的问题不是方向，是路径太窄。</p>'+
+'<p>你需要的不是更多想法，是把现有模式放大10倍的路径。</p>'+
+'<p style="margin-top:10px">4城连锁店各自为战，精准客户不足10%——你的问题可能也是这个。</p>'+
+'<p style="margin-top:10px"><strong>差距在于：谁先把现有路径标准化，然后复制。</strong></p>';
+}
+
+// ========== 推荐方向 ==========
+var strongQ=lights.map(function(l,i){return l==='yellow'?i:-1}).filter(function(x){return x>=0});
+var directionHtml='';
+if(redCount<4){
+if(strongQ.length>=2){
+if(strongQ.includes(0)||strongQ.includes(1)){
+directionHtml='<div style="padding:10px 12px;background:rgba(212,175,55,.06);border-radius:8px;margin-top:6px"><strong style="color:#D4AF37">→ 推荐：战略型IP</strong><br><span style="font-size:12px;color:#aaa">你有实战积累，说得出和新人的差距。可以不露脸，只讲逻辑。<br>变现：标准化产品+课程，不用一对一。</span></div>';
+}else if(strongQ.includes(3)||strongQ.includes(4)){
+directionHtml='<div style="padding:10px 12px;background:rgba(212,175,55,.06);border-radius:8px;margin-top:6px"><strong style="color:#D4AF37">→ 推荐：技术型IP</strong><br><span style="font-size:12px;color:#aaa">你的天赋有具体方向，适合做课程/训练营/录播教学。<br>变现：录播课+提示词库+模板包。</span></div>';
+}else{
+directionHtml='<div style="padding:10px 12px;background:rgba(212,175,55,.06);border-radius:8px;margin-top:6px"><strong style="color:#D4AF37">→ 推荐：陪伴型IP</strong><br><span style="font-size:12px;color:#aaa">记录你真实做事的过程，主打真实共鸣，不需要完美，只需要真实。</span></div>';
+}
+}else{
+directionHtml='<div style="padding:10px 12px;background:rgba(212,175,55,.06);border-radius:8px;margin-top:6px"><strong style="color:#D4AF37">→ 推荐：先做战略型，边做边找方向</strong><br><span style="font-size:12px;color:#aaa">先把手艺写成一段话发出去，看有没有人来问，边做边调整。</span></div>';
+}
+}
+
+// ========== 真实案例 ==========
+var caseHtml='';
+if(redCount>=4){
+caseHtml='一个开了20年洗衣店的老师傅，他从来不上镜头，就在镜头前认真洗衣服。评论区说"你家在哪儿"。他自己从不说"我很有经验"，但别人看得到。<br><br><strong style="color:#ff8888">你的问题：你现在说的那些"经验"，有多少是你自己觉得厉害，别人根本看不到的？</strong>';
+}else if(redCount>=2){
+caseHtml='一个做了10年电商的老板娘，上万场直播，但她说自己"太年轻没资格，怕吼不住中年顾客"。她以为问题是"太年轻"，真正的问题是"从来没输出过自己"。<br><br><strong style="color:#ff8888">你的问题：你现在觉得自己缺的东西，是真的缺，还是你从来没有把它变成别人能看到的东西？</strong>';
+}else{
+caseHtml='辽南4城连锁户外店，每家各自为战，泛娱乐流量90%，精准客户不足10%。最大的问题不是不会拍视频，是账号体系混乱、没有标准化。<br><br><strong style="color:#ff8888">你的问题：你现在变现的方式，有清晰的标准化路径吗？</strong>';
+}
+
+// ========== 绿灯出路 ==========
+var passHtml='';
+if(redCount>=4){
+passHtml='<div class="ok"><strong>你的出路：</strong><br>'+
+'① 今天，找一个认识的人，告诉他"我现在能帮别人做这件事"，先收1块钱。<br><br>'+
+'② 这1块钱是验证信号：有人真的需要，不是我自己觉得有用。<br><br>'+
+'③ 收到钱之后，把你的手艺写成一句话：帮谁，解决什么问题，收多少钱。<br><br>'+
+'<span style="font-size:12px;color:#888">⚠️ 重要提醒：不要急着做一对一咨询，一对一=时间换钱，永远做不大。<br>要做标准化产品——比如一个9.9元的提问清单，一次制作，卖100份。</span><br><br>'+
+'<strong>标准化产品才是资产，一对一咨询只是第二份打工。</strong></div>';
+}else if(redCount>=2){
+passHtml='<div class="ok"><strong>你的出路：</strong><br>'+
+'① 3天内，把你的手艺写成一句话：帮谁，解决什么问题，收多少钱。<br><br>'+
+'② 连这句话都写不出来，就先模仿：看3个你觉得做得好的IP，看他们朋友圈怎么介绍自己，抄结构。<br><br>'+
+'③ 写出来后，做一个9.9元的小产品（提问清单/模板/指南），挂出去卖。<br><br>'+
+'<span style="font-size:12px;color:#888">⚠️ 重要提醒：能做产品的不要做一对一。产品一次制作永久卖，一对一做再多也只是打工。</span><br><br>'+
+'<strong>你的目标是变成"内容资产持有者"，不是"内容工人"。</strong></div>';
+}else{
+passHtml='<div class="ok"><strong>你的出路：</strong><br>'+
+'① 本周：把你现有的变现方式标准化——帮谁、怎么交付、收多少钱，这三条能不能一句话说清？<br><br>'+
+'② 能说清之后，找一个细分渠道集中放大，不要多个平台分散精力。<br><br>'+
+'③ 记住：精准客户比泛娱乐流量值钱10倍。<br><br>'+
+'<strong>差距在于：谁先把现有路径标准化，然后复制。</strong></div>';
+}
+
+// ========== 3天行动清单 ==========
+var dayHtml='';
+if(redCount>=4){
+dayHtml=
+'<div class="day-item"><strong>📅 第1天：找到一个人，收1块钱</strong><span>找一个认识的人，直接告诉他"我现在能帮人做[你的手艺]"，问他有没有需要，先收1块钱。这1块钱是验证，不是钱。</span></div>'+
+'<div class="day-item"><strong>📅 第2天：发一条朋友圈</strong><span>写一句话：你能帮什么人解决什么问题。不用解释为什么厉害，不用说干了多少年。就说能帮谁做什么。</span></div>'+
+'<div class="day-item"><strong>📅 第3天：写出一句话定位</strong><span>把你干了很久的事，写成一句完整的话：帮[谁]，解决[什么问题]，收[多少钱]。这句话写不出来，就别往下走。</span></div>';
+}else if(redCount>=2){
+dayHtml=
+'<div class="day-item"><strong>📅 第1天：写出一句话定位</strong><span>花30分钟，把你的手艺写成一句话：帮[谁]，解决[什么问题]，收[多少钱]。写不出来就看3个做得好的人怎么介绍自己，抄结构。</span></div>'+
+'<div class="day-item"><strong>📅 第2天：发一条朋友圈</strong><span>用你写的那句话，发一条朋友圈，或者在闲鱼/小红书挂一个链接。只说你能帮谁做什么，不解释为什么。</span></div>'+
+'<div class="day-item"><strong>📅 第3天：做一个小产品</strong><span>把你最擅长的那个能力，变成一个9.9元的清单/模板/指南，挂出去卖。不是为了赚钱，是为了验证有人愿意付钱。</span></div>';
+}else{
+dayHtml=
+'<div class="day-item"><strong>📅 第1天：标准化现有模式</strong><span>把你在做的事，拆成3个词：帮谁、怎么交付、收多少。能用一句话说清，你的模式就标准化了一半。</span></div>'+
+'<div class="day-item"><strong>📅 第2天：选一个渠道集中放大</strong><span>不要再分散精力做多个平台。选一个平台，集中发一周内容，看哪个渠道来人最快。</span></div>'+
+'<div class="day-item"><strong>📅 第3天：做一个可复制的模板</strong><span>把你跑通的模式，变成一个别人可以直接照抄的模板/SOP。能够复制的东西，才是真正的资产。</span></div>';
+}
+
+// ========== 扎心金句（根据类型匹配） ==========
+var goldenLine='';
+if(redCount>=4){
+goldenLine='「你熬过的那些夜，就是别人最想买的东西。」';
+}else if(redCount>=2){
+goldenLine='「不是你讲不出来，是你还不知道自己有多值钱。」';
+}else{
+goldenLine='「30年攒下来的东西，不叫经历，叫资产。」';
+}
+
+// ========== 风险提醒 ==========
+var riskHtml='';
+if(redCount>=4){
+riskHtml='<div style="padding:10px 12px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);border-radius:8px;margin-top:8px;font-size:12px;color:#ffaaaa;line-height:2"><strong>⚠️ 开始之前，先问自己3个问题：</strong><br>1. 我愿意每天花多少时间？——超过1小时就要重新评估<br>2. 我能接受多久没有收入？——少于3个月就焦虑，现在不适合<br>3. 我只服务跟我经历相近的人吗？——跨行业会稀释你的信任状</div>';
+}else if(redCount>=2){
+riskHtml='<div style="padding:10px 12px;background:rgba(255,187,68,.04);border:1px solid rgba(255,187,68,.12);border-radius:8px;margin-top:8px;font-size:12px;color:#ffdd88;line-height:2"><strong>⚠️ 启动前想清楚3个坑：</strong><br>1. 不要做一对一咨询——那是时间换钱，永远做不大<br>2. 不要贪多求全——只服务跟你经历相近的人<br>3. 不要急着投钱——先用免费内容验证赛道</div>';
+}
+
+// ========== 组装报告 ==========
+var html=
+'<div class="s"><div class="st">一、你的真实画像</div><div class="tx"><span class="tag '+(redCount>=4?'tag-red':'tag-yellow')+'" style="font-size:14px;padding:3px 14px;margin-bottom:14px;display:inline-block">'+typeName+'</span><br>'+profileText+'</div></div>'+
+
+'<div class="s"><div class="st">二、5道诊断结果</div><div class="tx">'+lightTag(l1)+'<br>诊断1：有人找你帮忙，但付钱了吗<br>'+lightBox(l1,'你答不上来。帮过人不等于值money，顺手人情从来不是付费行为。',a1)+lightTag(l2)+'<br>诊断2：你和新手的差距多大<br>'+lightBox(l2,'你说不清和新人差什么。经验壁垒可能没有你想的那么高。',a2)+lightTag(l3)+'<br>诊断3：有没有人因为你这事儿发生真实改变<br>'+lightBox(l3,'没有真实的改变，就没有真实的需求。没有人真正受益，等于没有人真正需要你。',a3)+lightTag(l4)+'<br>诊断4：你的吃饭本事拿得走吗<br>'+lightBox(l4,'你答不上来护城河。如果答案是勤快或便宜，这不是护城河，这是苦力活。',a4)+lightTag(l5)+'<br>诊断5：你的天赋变成钱了吗<br>'+lightBox(l5,'你说不出来。天赋不变成产品，永远只是"我觉得我挺厉害"。',a5)+'</div></div>'+
+
+(redCount<4?('<div class="s"><div class="st">三、推荐IP定位方向</div><div class="tx">'+directionHtml+'</div></div>'):'')+
+
+'<div class="s"><div class="st">'+(redCount<4?'四':'三')+'.绿灯出路</div><div class="tx">'+passHtml+'</div></div>'+
+
+'<div class="s"><div class="st">'+(redCount<4?'五':'四')+'.3天行动清单</div><div class="tx"><div class="day-list">'+dayHtml+'</div>'+riskHtml+'</div></div>'+
+
+'<div class="s"><div class="st">'+(redCount<4?'六':'五')+'.真实案例参照</div><div class="tx" style="font-size:13px;line-height:2">'+caseHtml+'</div></div>'+
+
+'<div class="s"><div class="st">'+(redCount<4?'七':'六')+'.诊断总结</div><div class="tx" style="text-align:center;padding:16px 0;line-height:2.4">'+
+'<span class="red">'+redCount+'</span>个红灯，<span style="color:#ffbb44">'+yellowCount+'</span>个黄灯<br><br>'+
+goldenLine+'<br><br>'+
+'把"我觉得我很有经验"变成"有人愿意为我的经验付钱"，<br>'+
+'这一步你跨过去，<br>'+
+'你就是一个<strong style="color:#D4AF37">真正在跑的人</strong>。'+
+'</div></div>'+
+
+'<button class="share-img-btn share-btn" id="shareImgBtn">📸 生成诊断图片，可分享朋友圈</button>'+
+
+'<div class="ac"><button class="bp bpa" id="contactBtn">私信机器喵 · 深度定位</button><button class="bp bs" onclick="location.reload()">重新诊断</button></div>';
+
+document.getElementById('rc').innerHTML=html;
+
+// ========== 分享图片功能 ==========
+document.getElementById('shareImgBtn').onclick=function(){
+var canvas=document.getElementById('reportCanvas');
+var ctx=canvas.getContext('2d');
+// 背景
+ctx.fillStyle='#0d0d1a';
+ctx.fillRect(0,0,360,520);
+// 顶部装饰线
+var grad=ctx.createLinearGradient(0,0,360,0);
+grad.addColorStop(0,'#D4AF37');
+grad.addColorStop(1,'#b8962e');
+ctx.fillStyle=grad;
+ctx.fillRect(0,0,360,4);
+// 标题
+ctx.fillStyle='#D4AF37';
+ctx.font='bold 28px sans-serif';
+ctx.textAlign='center';
+ctx.fillText('🦞 战略小龙虾',180,52);
+ctx.font='14px sans-serif';
+ctx.fillStyle='#888';
+ctx.fillText('5扎心诊断 · 你的专属画像',180,76);
+ctx.fillStyle='rgba(212,175,55,.2)';
+ctx.fillRect(20,92,320,1);
+// 类型标签
+var tagBgColor=redCount>=4?'#ff6666':'#ffbb44';
+ctx.fillStyle=tagBgColor;
+ctx.font='bold 14px sans-serif';
+ctx.fillText(typeName,180,120);
+// 类型描述
+ctx.fillStyle='#ccc';
+ctx.font='13px sans-serif';
+ctx.textAlign='left';
+var lines=[];
+if(redCount>=4){
+lines=['你有一个干了很久的事，但','从来没有为它收过钱。','你的经验存在脑子里，没有','变成别人愿意买的东西。','你缺的从来不是手艺，是把手','艺变成钱的那一步。'];
+}else if(redCount>=2){
+lines=['有人找过你帮忙，但没人真正','为你的手艺付过钱。','你不是没价值，你是还没','输出自己。'];
+}else{
+lines=['你已经在变现，但规模上不去，','或者变现方式太辛苦。','差距在于：谁先把现有路径','标准化，然后复制。'];
+}
+lines.forEach(function(line,i){
+ctx.fillText(line,28,152+i*20);
+});
+// 分隔
+ctx.fillStyle='rgba(212,175,55,.15)';
+ctx.fillRect(20,252,320,1);
+// 红灯/黄灯
+ctx.fillStyle='#888';
+ctx.font='12px sans-serif';
+ctx.textAlign='center';
+ctx.fillText('诊断结果：'+redCount+'个红灯 · '+yellowCount+'个黄灯',180,278);
+// 5道题结果
+ctx.textAlign='left';
+var lightItems=[
+{l:'Q1：有人找你帮忙但付钱了吗',c:lights[0]},
+{l:'Q2：你和新手的差距多大',c:lights[1]},
+{l:'Q3：有没有人因你这事儿改变',c:lights[2]},
+{l:'Q4：你的吃饭本事拿得走吗',c:lights[3]},
+{l:'Q5：你的天赋变成钱了吗',c:lights[4]},
+];
+lightItems.forEach(function(item,i){
+var color=item.c==='red'?'#ff6666':'#ffbb44';
+ctx.fillStyle=color;
+ctx.font='11px sans-serif';
+ctx.fillText(item.c==='red'?'🔴 红灯':'🟡 黄灯',28,306+i*22);
+ctx.fillStyle='#aaa';
+ctx.fillText(item.l,56,306+i*22);
+});
+// 分隔
+ctx.fillStyle='rgba(212,175,55,.15)';
+ctx.fillRect(20,420,320,1);
+// 扎心金句
+ctx.fillStyle='#D4AF37';
+ctx.font='bold 13px sans-serif';
+ctx.textAlign='center';
+ctx.fillText(goldenLine,180,448);
+// 底部
+ctx.fillStyle='rgba(255,255,255,.1)';
+ctx.fillRect(20,466,320,40);
+ctx.fillStyle='#666';
+ctx.font='10px sans-serif';
+ctx.textAlign='center';
+ctx.fillText('战略小龙虾商店 · 机器喵中年IP军师',180,490);
+ctx.fillText('私信"定位"，获得深度定位分析机会',180,504);
+// 显示弹窗
+document.getElementById('shareModal').classList.add('show');
+};
+
+// ========== 私信按钮 ==========
+document.getElementById('contactBtn').onclick=function(){
+var msg='私信"定位"，找机器喵深度分析\n告诉你具体怎么从红灯变绿灯\n微信号：[你的微信号]';
+if(confirm(msg+'\n\n点击确定复制微信号')){
+navigator.clipboard&&navigator.clipboard.writeText('[你的微信号]');
+}
+};
+document.getElementById('closeModal').onclick=function(){
+document.getElementById('shareModal').classList.remove('show');
+};
+</script>
+</body>
+</html>
