@@ -16,8 +16,7 @@ body{font-family:PingFang SC,Microsoft YaHei,sans-serif;background:#0d0d1a;color
 h1{font-size:32px;color:#D4AF37;font-weight:700;letter-spacing:3px;margin-bottom:6px}
 .sub{font-size:15px;color:#D4AF37;margin-bottom:4px}
 .shop{font-size:12px;color:#666;margin-bottom:32px}
-.cite{font-size:13px;color:#aaa;line-height:2;max-width:360px;margin:0 auto 32px;font-style:italic;border-left:2px solid rgba(212,175,55,.3);padding-left:16px;text-align:left}
-.cite::before{content:'"';font-size:24px;color:#D4AF37;display:block}
+.cite{font-size:16px;color:#D4AF37;line-height:2.2;max-width:360px;margin:0 auto 32px;text-align:center;font-weight:600;letter-spacing:1px;border:none;padding:0}
 .next-btn{width:100%;padding:16px;background:linear-gradient(135deg,#D4AF37,#b8962e);color:#1a0f0f;font-size:16px;font-weight:700;border:none;border-radius:12px;cursor:pointer;letter-spacing:1px;margin-bottom:14px;box-sizing:border-box}
 .next-btn:hover{opacity:0.9}
 .next-btn:active{opacity:0.8;transform:scale(0.98)}
@@ -111,19 +110,13 @@ h2{font-size:20px;color:#D4AF37;font-weight:700;margin-bottom:4px}
 <div id="s0">
   <div class="li">🦞</div>
   <h1>战略小龙虾</h1>
-  <div class="sub">5扎心诊断 · 战略定位</div>
+  <div class="sub">5扎心测试</div>
   <div class="shop">战略小龙虾商店</div>
-  <div class="cite">
-    中年人最容易犯的错，不是选错了路，<br>
-    是干了半辈子，<br>
-    从来没认真问过自己：<br>
-    我到底值什么？<br><br>
-    这5道题，<br>
-    把你在别人眼里值钱、<br>
-    但你自己看不见的东西翻出来。
+  <div class="cite" id="hookText">
+    <span id="hookRotate"></span>
   </div>
-  <button class="next-btn" id="nextBtn">先看看说明 →</button>
-  <div class="nt">5道灵魂拷问 · 约10分钟 · 答完即出诊断</div>
+  <button class="next-btn" id="nextBtn">开始诊断 →</button>
+  <div class="nt">5道题 · 测完你就知道答案</div>
 </div>
 
 <!-- 引导页 s00 -->
@@ -181,19 +174,35 @@ h2{font-size:20px;color:#D4AF37;font-weight:700;margin-bottom:4px}
 </div>
 
 <script>
-// ========== 题目配置 ==========
+// ========== 开场钩子轮播 ==========
+var hooks=[
+'你帮过那么多人，有人给你掏过钱吗？',
+'干了这么多年，你告诉过自己值多少吗？',
+'别人找你帮忙，你收过钱吗？',
+'你觉得简单的事，别人花大钱学不会',
+'你熬过的那些夜，就是别人最想买的东西'
+];
+var hi=0;
+function rotateHook(){
+document.getElementById('hookRotate').textContent=hooks[hi];
+hi=(hi+1)%hooks.length;
+}
+rotateHook();
+setInterval(rotateHook,3000);
+
+// ========== 题目配置（犀利扎心版） ==========
 var Q=[
-{q:'有人说"你这事儿我搞不定，你帮帮我"——但他最后付钱了吗？',h:'别人找你帮忙≠你的手艺值money。说一个你帮过很多次但从来没收到过钱的事。',intro:'先问一个最常见的情况——你身边有没有这样的人？'},
-{q:'你跟你这行刚入行的新手比，最大的区别是什么？新手多久能追上你？',h:'别说"经验丰富"，说一个你花了多少年才掌握、新手没有捷径的那点东西。',intro:'好，就算有人找你了，你跟新手的差距到底在哪？'},
-{q:'你见过有人因为你的这件事发生了什么具体改变吗？',h:'不是"帮过人"，是帮完之后对方的生活/生意/状态有什么真实变化，那句让他记住的话是什么？',intro:'接下来问一个有点扎心的——你的手艺，真的改变过谁吗？'},
-{q:'如果一个年轻人明天开始做你这行，勤快、便宜、愿意学，你还能活下去吗？',h:'你现在吃饭的本事，是靠时间积累出来的，还是他愿意花功夫就能学会的？',intro:'假设来了一个比你年轻、比你勤快、比你便宜的人——你的壁垒在哪？'},
-{q:'有没有一件事，你做的时候觉得很简单，但别人花大钱学了还是学不会？',h:'你觉得简单的事别人觉得难。但光你觉得简单不够——有没有人愿意为这个"简单"付过钱？',intro:'最后问一个最核心的——你的天赋，有没有变成别人愿意掏钱的东西？'}
+{q:'你帮过的人里，有没有人说过"太感谢了，没有你我真不行"？——他给你掏过钱吗？',h:'顺手帮忙不算数。说一个你帮过很多次、但从来没收到过一毛钱的例子。',intro:'一个洗衣店老师傅，从不上镜头。评论区有人说"你家在哪儿"。但他从没收过钱，觉得"顺手帮个忙嘛"。'},
+{q:'一个比你年轻的人，愿意学、愿意拼、愿意收你一半的钱——你的饭碗还能端住吗？',h:'别说"我比他经验多"。说一个你花了很久才摸到、新手没有捷径的那点东西。',intro:'一个电商老板娘，做了很多年直播。她说自己"太年轻没资格"。但真正的问题是——她的壁垒到底是什么？'},
+{q:'你帮人之后，对方后来怎么样了？有没有一句他说的、让你一直记得的话？',h:'不是"我帮过很多人"，是帮完之后他发生了什么变化，那句话是什么。',intro:'帮过人≠你的手艺值钱。帮人之后有真实改变，才叫有价值。'},
+{q:'你有没有一件事，做的时候觉得"这有什么难的"——但别人花大钱学了还是学不会？',h:'光你觉得简单不够。有没有人真的掏过钱，就为学这个"简单"？',intro:'你干得越久，越觉得很多事"本来就该这样"。但别人不这么觉得。'},
+{q:'如果让你从0开始重来，有一件事是你最不担心的——是什么？为什么？',h:'是你本来就擅长？还是你觉得这事本来就不难？它能不能变成别人愿意掏钱的东西？',intro:'你最不怕的事里，藏着最强的天赋。但天赋不变成产品，永远只是"我喜欢"。'}
 ];
 var Q2=[
-'能说一个具体的人吗？哪怕是朋友、邻居、同事都可以，哪怕没付钱也行。',
-'别说"干得久"，干得久不等于干得好。说一个更底层的东西。',
-'没有真实的改变=没有人真正感受到你的价值。你还停留在"我觉得有用"阶段。',
-'如果你的答案是"勤快"或"价格低"，这不是护城河，这是苦力活。',
+'能说一个具体的人吗？哪怕是朋友，哪怕没付钱，哪怕只是说了一句谢谢。',
+'别说"干得久"。说一个更底层的东西——你踩过的那些坑，新手多久会踩到。',
+'说不出感谢的话=没有真实改变。没有真实改变=没有人真正需要你。',
+'如果答案是"勤快"或"便宜"，这不是护城河，这是苦力活。',
 '你觉得简单的事，有没有变成别人愿意掏钱的产品？'
 ];
 
@@ -246,8 +255,10 @@ document.getElementById('pl').textContent='第 '+(q+1)+' 道题，共5道';
 function prompt(){
 var c=Q[q];
 var n=Q2[q];
-var s='<span class="ql">第 '+(q+1)+' 题 / 共5题</span><br><br>'+
-'<strong style="font-size:15px;color:#fff;line-height:2">'+c.q+'</strong><br><br>'+
+// 先展示一个真实案例开场
+var introHtml=c.intro?'<div style="background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.12);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:12px;color:#999;line-height:1.9;font-style:italic">'+c.intro+'</div>':'';
+var s='<span class="ql">第 '+(q+1)+' 题 / 共5题</span>'+introHtml+
+'<strong style="font-size:15px;color:#fff;line-height:2;display:block;margin:8px 0">'+c.q+'</strong>'+
 '<span class="hi">'+c.h+'</span><br><br>'+
 '<span class="fw">→ '+n+'</span>';
 add('r',s);
@@ -363,14 +374,14 @@ directionHtml='<div style="padding:10px 12px;background:rgba(212,175,55,.06);bor
 }
 }
 
-// 真实案例
+// 真实案例（身边真实的人，不是网上抄的）
 var caseHtml='';
 if(redCount>=4){
-caseHtml='一个开了20年洗衣店的老师傅，他从来不上镜头，就在镜头前认真洗衣服。评论区说"你家在哪儿"。他自己从不说"我很有经验"，但别人看得到。<br><br><strong style="color:#ff8888">你的问题：你现在说的那些"经验"，有多少是你自己觉得厉害，别人根本看不到的？</strong>';
+caseHtml='一个洗衣店老师傅，从不上镜头，就认真洗衣服。评论区有人说"你家在哪儿"。他自己从不说"我很有经验"，但别人看得到。<br><br>你呢？你现在说的那些"经验"，有多少是你自己觉得厉害，别人根本看不到的？<br><br><strong style="color:#D4AF37">→ 这不是你的问题，是还没把手艺变成别人能看到的东西。</strong>';
 }else if(redCount>=2){
-caseHtml='一个做了10年电商的老板娘，上万场直播，但她说自己"太年轻没资格，怕吼不住中年顾客"。她以为问题是"太年轻"，真正的问题是"从来没输出过自己"。<br><br><strong style="color:#ff8888">你的问题：你现在觉得自己缺的东西，是真的缺，还是你从来没有把它变成别人能看到的东西？</strong>';
+caseHtml='一个做电商的老板娘，做了很多年直播，说自己"太年轻没资格"。她以为问题是"太年轻"，真正的问题是"从来没输出过自己"。<br><br>你呢？你现在觉得自己缺的东西，是真的缺，还是你从来没有把它变成别人能看到的东西？<br><br><strong style="color:#D4AF37">→ 不是你讲不出来，是你还不知道自己有多值钱。</strong>';
 }else{
-caseHtml='辽南4城连锁户外店，每家各自为战，泛娱乐流量90%，精准客户不足10%。最大的问题不是不会拍视频，是账号体系混乱、没有标准化。<br><br><strong style="color:#ff8888">你的问题：你现在变现的方式，有清晰的标准化路径吗？</strong>';
+caseHtml='一个4城连锁店，各自为战。泛娱乐流量占了大部分，精准客户却很少。最大的问题不是不会拍视频，是账号体系混乱、没有标准化。<br><br>你呢？你现在变现的方式，有清晰的标准化路径吗？<br><br><strong style="color:#D4AF37">→ 差距在于：谁先把现有路径标准化，然后复制。</strong>';
 }
 
 // 绿灯出路
@@ -420,7 +431,7 @@ goldenLine='「你熬过的那些夜，就是别人最想买的东西。」';
 }else if(redCount>=2){
 goldenLine='「不是你讲不出来，是你还不知道自己有多值钱。」';
 }else{
-goldenLine='「30年攒下来的东西，不叫经历，叫资产。」';
+goldenLine='「干了这么多年攒下来的东西，不叫经历，叫资产。」';
 }
 
 // 风险提醒
@@ -429,6 +440,17 @@ if(redCount>=4){
 riskHtml='<div style="padding:10px 12px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);border-radius:8px;margin-top:8px;font-size:12px;color:#ffaaaa;line-height:2"><strong>⚠️ 开始之前，先问自己3个问题：</strong><br>1. 我愿意每天花多少时间？——超过1小时就要重新评估<br>2. 我能接受多久没有收入？——少于3个月就焦虑，现在不适合<br>3. 我只服务跟我经历相近的人吗？——跨行业会稀释你的信任状</div>';
 }else if(redCount>=2){
 riskHtml='<div style="padding:10px 12px;background:rgba(255,187,68,.04);border:1px solid rgba(255,187,68,.12);border-radius:8px;margin-top:8px;font-size:12px;color:#ffdd88;line-height:2"><strong>⚠️ 启动前想清楚3个坑：</strong><br>1. 不要做一对一咨询——那是时间换钱，永远做不大<br>2. 不要贪多求全——只服务跟你经历相近的人<br>3. 不要急着投钱——先用免费内容验证赛道</div>';
+}
+
+// ========== 9.9→99 转化钩子 ==========
+var promoteHtml='';
+if(redCount>=2){
+promoteHtml='<div style="background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(212,175,55,.03));border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:16px 0;text-align:center">'+
+'<div style="font-size:11px;color:#D4AF37;letter-spacing:1px;margin-bottom:8px">🦞 测完还想继续挖？</div>'+
+'<div style="font-size:13px;color:#ccc;line-height:2;margin-bottom:14px">5道题只是开胃菜。<br>你干了这么多年的经历里，还有更多你自己没看见的价值。</div>'+
+'<div style="font-size:12px;color:#888;margin-bottom:14px">战略小龙虾·深度挖掘版（59元）<br><span style="color:#666">35道追问 · 挖出你的黄金点 · 3个月行动计划</span></div>'+
+'<div onclick="alert(\'加微信号 13889891527，备注\"深度挖掘\"，发你详细方案\')" style="display:inline-block;background:rgba(212,175,55,.15);color:#D4AF37;border:1px solid rgba(212,175,55,.3);padding:8px 18px;border-radius:8px;font-size:12px;cursor:pointer">加微 13889891527 购买</div>'+
+'</div>';
 }
 
 // 组装报告
@@ -453,9 +475,13 @@ goldenLine+'<br><br>'+
 '你就是一个<strong style="color:#D4AF37">真正在跑的人</strong>。'+
 '</div></div>'+
 
+promoteHtml+
+
 '<button class="share-img-btn share-btn" id="shareImgBtn">📸 生成诊断图片，可分享朋友圈</button>'+
 
-'<div class="ac"><button class="bp bpa" id="contactBtn">私信机器喵 · 深度定位</button><button class="bp bs" onclick="location.reload()">重新诊断</button></div>';
+'<div style="text-align:center;padding:12px 0;border-top:1px solid rgba(212,175,55,.1);margin-top:8px"><span style="font-size:11px;color:#555">🦞 战略小龙虾商店</span><br><span style="font-size:10px;color:#444">基于真实案例 · 不说废话 · 只说真话</span></div>'+
+
+'<div class="ac"><button class="bp bpa" id="contactBtn">私信深度定位</button><button class="bp bs" onclick="location.reload()">重新诊断</button></div>';
 
 document.getElementById('rc').innerHTML=html;
 
@@ -530,16 +556,16 @@ ctx.fillRect(20,466,320,40);
 ctx.fillStyle='#666';
 ctx.font='10px sans-serif';
 ctx.textAlign='center';
-ctx.fillText('战略小龙虾商店 · 机器喵中年IP军师',180,490);
-ctx.fillText('私信"定位"，获得深度定位分析机会',180,504);
+ctx.fillText('战略小龙虾商店',180,490);
+ctx.fillText('私信"定位"或加微信13889891527',180,504);
 document.getElementById('shareModal').classList.add('show');
 };
 
 // 私信按钮
 document.getElementById('contactBtn').onclick=function(){
-var msg='私信"定位"，找机器喵深度分析\n告诉你具体怎么从红灯变绿灯\n微信号：[你的微信号]';
+var msg='私信"定位"，深度分析\n告诉你具体怎么从红灯变绿灯\n微信号：13889891527';
 if(confirm(msg+'\n\n点击确定复制微信号')){
-if(navigator.clipboard){navigator.clipboard.writeText('[你的微信号]');}
+if(navigator.clipboard){navigator.clipboard.writeText('13889891527');}
 }
 };
 
